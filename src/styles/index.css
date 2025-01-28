@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #202020;
+    --primary-color: #161616;
     --secondary-color: #272727;
     --text-color: #f5f5f5;
     --contrast: #A52A2A     ;
@@ -10,7 +10,7 @@
 }
 
 body {
-    background: radial-gradient(circle, rgb(112, 0, 0) 0%, rgb(36, 36, 36) 20%, rgba(0, 0, 0, 1) 100%);
+    background: radial-gradient(circle, rgb(92, 0, 0) 0%, rgb(36, 36, 36) 20%, rgba(0, 0, 0, 1) 100%);
     font-family: var(--font-sans);
     color: var(--text-color);
     line-height: 1.6;
@@ -19,7 +19,6 @@ body {
 .container {
     margin: 0 auto;
     max-width: 1024px;
-    padding: 0;
     color: var(--text-color);
     margin-top: 3rem;
 }
@@ -82,7 +81,7 @@ header {
     line-height: 1.8;
 }
 
-.cta-button {
+.hero-container .cta-button {
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
     border-radius: 16px;
@@ -96,7 +95,7 @@ header {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.cta-button:hover {
+.hero-container .cta-button:hover {
     background: var(--button-hover-gradient);
     transform: translateY(-3px);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
@@ -170,7 +169,6 @@ header {
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: var(--text-color);
     font-weight: bold;
 }
 
@@ -214,4 +212,105 @@ header {
 
 .benefit-item p {
     font-size: 1rem;
+}
+
+
+/* testemunhas */
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 10px;
+    background: var(--primary-color);
+}
+
+.testimonials h2 {
+    font-size: 3rem;
+    color: var(--contrast);
+    font-weight: bold;
+}
+/* CTA Section - Card Style */
+
+.cta-section {
+    display: flex;
+    justify-content: center; /* Centraliza a seção */
+    align-items: center;
+    padding: 50px 20px;
+    background-color: var(--primary-color); /* Fundo para a seção CTA */
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+}
+
+/* Card específico */
+.cta-section .container {
+    background-color: var(--secondary-color); /* Cor de fundo do card */
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Sombra do card */
+    width: 100%;
+    max-width: 600px; /* Limita a largura do card */
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-section .container:hover {
+    transform: translateY(-5px); /* Levanta o card ao passar o mouse */
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4); /* Aumenta a sombra no hover */
+}
+
+.cta-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: var(--contrast);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-description {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: var(--text-color);
+    font-weight: bold;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+.cta-section .cta-button {
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 16px;
+    background: var(--button-gradient);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    width: 100%; 
+}
+
+.cta-section .cta-button:hover {
+    background: var(--button-hover-gradient);
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+}
+/* footer */
+.footer {
+    background: #202020;
+    color: var(--text-color);
+    padding: 5px 0;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
 }
