@@ -16,11 +16,24 @@ body {
     line-height: 1.6;
 }
 
+.container {
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 0;
+    color: var(--text-color);
+    margin-top: 3rem;
+}
+
 header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    position: relative;
     text-align: left;
     height: 90vh;
+    background: 
+        linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.425) 100%), /* Gradiente da esquerda para a direita */
+        url('../images/Slide1.jpg') no-repeat center center / cover; /* Imagem de fundo */
+
 }
 .hero-container {
     max-width: var(--container-width);
@@ -47,13 +60,6 @@ header {
 }
 
 
-.container {
-    margin: 0 auto;
-    max-width: 1024px;
-    padding: 0;
-    color: var(--text-color);
-    margin-top: 8rem;
-}
 
 .hero-title {
     font-size: 2.75rem;
@@ -144,4 +150,32 @@ header {
     100% {
         transform: translateX(-25%);
     }
+}
+
+.about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    align-items: center;
+    justify-content: center;
+}
+
+.section-description {
+    font-size: 1.5rem;
+    max-width: 700px;
+    margin-bottom: 60px;
+}
+
+.benefits {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
 }
