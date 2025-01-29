@@ -2,7 +2,8 @@
     --primary-color: #161616;
     --secondary-color: #272727;
     --text-color: #f5f5f5;
-    --contrast: #A52A2A     ;
+    --contrast: #A52A2A;
+    --circle-radient:radial-gradient(circle, rgb(66, 0, 0) 0%, rgb(36, 36, 36) 20%, rgba(0, 0, 0, 1) 100%);
     --button-gradient: linear-gradient(90deg, rgba(80,0,0,1) 0%, rgba(139,0,0,1) 41%, rgba(205,92,92,1) 100%);
     --button-hover-gradient: linear-gradient(90deg, rgba(100,0,0,1) 0%, rgba(165,42,42,1) 41%, rgba(240,128,128,1) 100%);
     --carousel-color: #dddddda4;
@@ -10,7 +11,7 @@
 }
 
 body {
-    background: radial-gradient(circle, rgb(92, 0, 0) 0%, rgb(36, 36, 36) 20%, rgba(0, 0, 0, 1) 100%);
+    background: var(--primary-color);
     font-family: var(--font-sans);
     color: var(--text-color);
     line-height: 1.6;
@@ -30,8 +31,8 @@ header {
     text-align: left;
     height: 90vh;
     background: 
-        linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.425) 100%), /* Gradiente da esquerda para a direita */
-        url('../images/Slide1.jpg') no-repeat center center / cover; /* Imagem de fundo */
+        linear-gradient(90deg, rgb(29, 29, 29) 0%,rgb(24, 24, 24) 50%, rgba(0, 0, 0, 0.555) 100%), 
+        url('../images/Slide1.jpg') no-repeat center center / cover; 
 
 }
 .hero-container {
@@ -118,10 +119,11 @@ header {
     display: flex;
     overflow: hidden;
     width: 100%;
+    height: 50px;
     padding: 15px 0;
     border-style: solid;
     border-width: 1px 0 1px 0;
-    border-color: #ffffff44;
+    border-color: #ffffff10;
     opacity: 1;
     background: #161616;
 }
@@ -138,7 +140,7 @@ header {
     width: 25%; 
     color: var(--carousel-color);
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: lighter;
 }
 
@@ -194,15 +196,15 @@ header {
     color: var(--text-color);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 6px rgba(139, 0, 0, 0.3); /* Sombra sutil e avermelhada */
     flex: 1;
     max-width: 30%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .benefit-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.733); 
+    transform: translateY(-3px); /* Elevação menor */
+    box-shadow: 0 4px 12px rgba(187, 42, 42, 0.753); /* Sombra mais intensa, mas com menos alcance */
 }
 
 .benefit-item h3 {
@@ -246,12 +248,14 @@ header {
     width: 100%;
 }
 
-/* Card específico */
 .cta-section .container {
     background-color: var(--secondary-color); /* Cor de fundo do card */
     padding: 40px;
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Sombra do card */
+    box-shadow: 
+        0 0 15px rgba(139, 0, 0, 0.6),  /* Brilho suave */
+        0 0 30px rgb(94, 23, 23), /* Luz avermelhada expandida */
+        0 0 60px rgba(124, 54, 54, 0.4); /* Luz mais difusa */
     width: 100%;
     max-width: 600px; /* Limita a largura do card */
     text-align: center;
@@ -262,9 +266,11 @@ header {
 
 .cta-section .container:hover {
     transform: translateY(-5px); /* Levanta o card ao passar o mouse */
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4); /* Aumenta a sombra no hover */
+    box-shadow: 
+        0 0 20px rgba(139, 0, 0, 0.8),  
+        0 0 40px rgb(88, 20, 20),  
+        0 0 80px rgba(116, 49, 49, 0.548); /* Aumenta o brilho */
 }
-
 .cta-title {
     font-size: 3rem;
     margin-bottom: 20px;
