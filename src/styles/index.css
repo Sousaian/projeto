@@ -3,7 +3,7 @@
     --secondary-color: #272727;
     --text-color: #f5f5f5;
     --contrast: #A52A2A;
-    --circle-radient:radial-gradient(circle, rgb(66, 0, 0) 0%, rgb(36, 36, 36) 20%, rgba(0, 0, 0, 1) 100%);
+    --circle-radient: radial-gradient(circle, rgb(66, 0, 0) 0%, rgb(36, 36, 36) 20%, rgba(0, 0, 0, 1) 100%);
     --button-gradient: linear-gradient(90deg, rgba(80,0,0,1) 0%, rgba(139,0,0,1) 41%, rgba(205,92,92,1) 100%);
     --button-hover-gradient: linear-gradient(90deg, rgba(100,0,0,1) 0%, rgba(165,42,42,1) 41%, rgba(240,128,128,1) 100%);
     --carousel-color: #dddddda4;
@@ -18,10 +18,9 @@ body {
 }
 
 .container {
-    margin: 0 auto;
-    max-width: 1024px;
+    margin: 3rem auto 0;
+    max-width: 1200px;
     color: var(--text-color);
-    margin-top: 3rem;
 }
 
 header {
@@ -31,45 +30,35 @@ header {
     text-align: left;
     height: 90vh;
     background: 
-        linear-gradient(90deg, rgb(29, 29, 29) 0%,rgb(24, 24, 24) 50%, rgba(0, 0, 0, 0.555) 100%), 
-        url('../images/Slide1.jpg') no-repeat center center / cover; 
-
+        linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 60%, rgba(0, 0, 0, 0.555) 100%), 
+        url('../images/Slide1.jpg') no-repeat center / cover;
 }
+
 .hero-container {
-    max-width: var(--container-width);
+    max-width: 1400px;
+    width: 100%;
     margin: auto;
     text-align: left;
 }
 
 .hero-title {
-    font-size: 2.5rem;
+    font-size: 4rem;
     margin: 0;
     color: var(--text-color);
 }
 
 .hero-subtitle {
-    font-size: 1.75rem;
-    color: var(--highlight-color);
-    text-decoration: overline;
-}
-
-.hero-description {
-    margin-top: 1rem;
-    max-width: 600px;
-    font-size: 1rem;
-}
-
-
-
-.hero-title {
-    font-size: 2.75rem;
-}
-
-.hero-subtitle {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--contrast);
     text-decoration: overline;
     margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    font-size: 2rem;
+    line-height: 1.8;
+    margin-top: 1rem;
+    max-width: 650px;
 }
 
 .description {
@@ -77,20 +66,15 @@ header {
     margin-top: 0.5rem;
 }
 
-.hero-description {
-    font-size: 1.5rem;
-    line-height: 1.8;
-}
-
 .hero-container .cta-button {
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding: 0.75rem 1.5rem;
     border-radius: 16px;
     background: var(--button-gradient);
     color: var(--text-color);
     border: none;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     transition: all 0.3s ease;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
@@ -112,8 +96,6 @@ header {
         transform: translateY(0);
     }
 }
-
-
 /* carrossel */ 
 .carousel-container {
     display: flex;
@@ -169,13 +151,13 @@ header {
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 20px;
     font-weight: bold;
 }
 
 .section-description {
-    font-size: 1.5rem;
+    font-size: 2rem;
     max-width: 700px;
     margin-bottom: 60px;
     color: var(--text-color);
@@ -198,7 +180,7 @@ header {
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(139, 0, 0, 0.3); /* Sombra sutil e avermelhada */
     flex: 1;
-    max-width: 30%;
+    max-width: 40%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -208,12 +190,12 @@ header {
 }
 
 .benefit-item h3 {
-    font-size: 1.75rem;
+    font-size: 2rem;
     margin-bottom: 10px;
 }
 
 .benefit-item p {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 
@@ -249,15 +231,15 @@ header {
 }
 
 .cta-section .container {
-    background-color: var(--secondary-color); /* Cor de fundo do card */
+    background-color: var(--secondary-color); 
     padding: 40px;
     border-radius: 16px;
     box-shadow: 
-        0 0 15px rgba(139, 0, 0, 0.6),  /* Brilho suave */
-        0 0 30px rgb(94, 23, 23), /* Luz avermelhada expandida */
-        0 0 60px rgba(124, 54, 54, 0.4); /* Luz mais difusa */
+        0 0 15px rgba(139, 0, 0, 0.6),  
+        0 0 30px rgb(94, 23, 23),
+        0 0 60px rgba(124, 54, 54, 0.4); 
     width: 100%;
-    max-width: 600px; /* Limita a largura do card */
+    max-width: 600px; 
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
@@ -265,11 +247,11 @@ header {
 }
 
 .cta-section .container:hover {
-    transform: translateY(-5px); /* Levanta o card ao passar o mouse */
+    transform: translateY(-5px); 
     box-shadow: 
         0 0 20px rgba(139, 0, 0, 0.8),  
         0 0 40px rgb(88, 20, 20),  
-        0 0 80px rgba(116, 49, 49, 0.548); /* Aumenta o brilho */
+        0 0 80px rgba(116, 49, 49, 0.548); 
 }
 .cta-title {
     font-size: 3rem;
@@ -309,6 +291,100 @@ header {
     transform: translateY(-3px);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
 }
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: var(--secondary-color);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); 
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: var(--primary-color);
+}
+
+.popup-content h2 {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.popup-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.popup-content input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.popup-content input:focus {
+    border-color: var(--highlight-color);
+}
+
+.popup-content button {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.popup-content button:hover {
+    background: var(--contrast);
+}
+
+
 /* footer */
 .footer {
     background: #202020;
@@ -317,6 +393,154 @@ header {
     text-align: center;
 }
 
-.footer p {
-    margin: 0;
+.container-footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+    max-width: 1024px;
+    color: var(--text-color);
 }
+
+.footer p {
+    margin-bottom: .125rem;
+}
+
+.footer a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    header {
+        padding: 2rem 1rem;
+        background: 
+            linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 50%, rgba(0, 0, 0, 0.555) 100%), 
+            url('../images/Slide1.jpg') no-repeat center / cover;
+    }
+
+    .hero-container {
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 2rem;
+        text-decoration: none;
+    }
+
+    .hero-description {
+        font-size: 1.25rem;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-container .cta-button {
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem;
+        margin: 1rem auto;
+    }
+
+    .carousel-container {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .carousel-item {
+        width: 50%;
+        font-size: 12px;
+    }
+
+    .about {
+        padding: 2rem 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .benefits {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .benefit-item {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .testimonials {
+        padding: 2rem 1rem;
+    }
+
+    .testimonials h2 {
+        font-size: 2rem;
+    }
+
+    .cta-section {
+        padding: 2rem 1rem;
+    }
+
+    .cta-section .container {
+        padding: 1.5rem;
+    }
+
+    .cta-title {
+        font-size: 2rem;
+    }
+
+    .cta-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-section .cta-button {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .popup-content {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .popup-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .popup-content input,
+    .popup-content button {
+        font-size: 14px;
+    }
+
+    .footer {
+        padding: 1rem 0;
+    }
+
+    .container-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer p {
+        font-size: 14px;
+        font-style: italic;
+    }
+} 
