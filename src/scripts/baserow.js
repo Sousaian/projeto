@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.ok) {
                     alert("Cadastro realizado com sucesso!");
 
-                    // Redirecionar para o WhatsApp após o envio
+                    // Enviar mensagem para o WhatsApp
                     const mensagem = `Olá, me chamo ${nome}. Quero saber mais sobre seus serviços.`;
-                    const numeroWhatsApp = "6298023348"; 
+                    const numeroWhatsApp = "556298023348"; 
                     window.location.href = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
                 } else {
                     alert("Erro ao cadastrar. Tente novamente.");
