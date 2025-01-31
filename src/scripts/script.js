@@ -72,5 +72,92 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.querySelector(".testimonials-slider");
+    const items = document.querySelectorAll(".testimonial-item");
+    
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    function update3DEffect() {
+        const center = slider.scrollLeft + slider.clientWidth / 2;
+
+        let closestItem = null;
+        let closestDistance = Infinity;
+
+        items.forEach((item) => {
+            const boxCenter = item.offsetLeft + item.clientWidth / 2;
+            const distance = Math.abs(center - boxCenter);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestItem = item;
+            }
+        });
+
+        items.forEach((item) => {
+            item.classList.remove("active", "prev", "next");
+        });
+
+        if (closestItem) {
+            closestItem.classList.add("active");
+
+            const prevItem = closestItem.previousElementSibling;
+            const nextItem = closestItem.nextElementSibling;
+
+            if (prevItem) prevItem.classList.add("prev");
+            if (nextItem) nextItem.classList.add("next");
+        }
+    }
+
+    function scrollToActive() {
+        const activeItem = document.querySelector(".testimonial-item.active");
+        if (activeItem) {
+            slider.scrollTo({
+                left: activeItem.offsetLeft - (slider.clientWidth - activeItem.clientWidth) / 2,
+                behavior: "smooth",
+            });
+        }
+    }
+
+    slider.addEventListener("mousedown", (e) => {
+        isDown = true;
+        slider.classList.add("active");
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        slider.style.cursor = "grabbing";
+        e.preventDefault();
+    });
+
+    slider.addEventListener("mouseleave", () => {
+        isDown = false;
+        slider.classList.remove("active");
+        slider.style.cursor = "grab";
+    });
+
+    slider.addEventListener("mouseup", () => {
+        isDown = false;
+        slider.classList.remove("active");
+        slider.style.cursor = "grab";
+        scrollToActive();
+    });
+
+    slider.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    slider.addEventListener("scroll", update3DEffect);
+
+    // Suporte para touchscreen (arrastar no celular)
+    slider.addEventListener("touchend", scrollToActive);
+    slider.addEventListener("touchmove", update3DEffect);
+
+    update3DEffect();
+});
 
 animate();

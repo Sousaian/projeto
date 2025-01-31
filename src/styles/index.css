@@ -199,22 +199,107 @@ header {
 }
 
 
-/* testemunhas */
+/* Seção de Testemunhos */
 .testimonials {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     text-align: center;
-    padding: 20px 10px;
-    background: var(--primary-color);
+    padding: 80px 20px;
+    background: linear-gradient(145deg, var(--primary-color), #1a1a1a);
+    perspective: 1200px;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
-.testimonials h2 {
-    font-size: 3rem;
-    color: var(--contrast);
-    font-weight: bold;
+.testimonials::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(165, 42, 42, 0.1), transparent 70%);
+    pointer-events: none;
 }
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--contrast);
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Contêiner do carrossel */
+.testimonials-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-y: hidden;
+}
+
+/* Slider com efeito de carrossel */
+.testimonials-slider {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 20px;
+    cursor: grab;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out;
+
+}
+
+.testimonials-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Estilo 3D das imagens */
+.testimonial-item {
+    flex: 0 0 auto;
+    width: 300px;
+    scroll-snap-align: center;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    transform-origin: center;
+    text-align: center;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+}
+
+.testimonial-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Efeito de destaque para a imagem central */
+.testimonial-item.active {
+    transform: scale(1.08) translateZ(100px);
+    opacity: 1;
+    box-shadow: 0px 8px 25px rgba(165, 42, 42, 0.6);
+}
+
+/* Efeito nas laterais */
+.testimonial-item.prev {
+    transform: rotateY(20deg) scale(0.9) translateX(-30px);
+    opacity: 0.6;
+}
+
+.testimonial-item.next {
+    transform: rotateY(-20deg) scale(0.9) translateX(30px);
+    opacity: 0.6;
+}
+
+
 /* CTA Section - Card Style */
 
 .cta-section {
@@ -477,12 +562,14 @@ header {
     }
 
     .benefits {
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
         gap: 20px;
     }
 
     .benefit-item {
-        max-width: 100%;
+        max-width: 80%;
         height: auto;
     }
 
@@ -500,6 +587,8 @@ header {
 
     .cta-section .container {
         padding: 1.5rem;
+        text-align: center;
+        width: 80%;
     }
 
     .cta-title {
@@ -512,7 +601,7 @@ header {
     }
 
     .cta-section .cta-button {
-        font-size: 1rem;
+        font-size: 1.5rem;
         padding: 0.5rem 1rem;
     }
 
@@ -544,3 +633,126 @@ header {
         font-style: italic;
     }
 } 
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 0 0.5rem;
+    }
+
+    header {
+        padding: 1.5rem 0.5rem;
+        background: 
+            linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 50%, rgba(0, 0, 0, 0.555) 100%), 
+            url('../images/Slide1.jpg') no-repeat center / cover;
+    }
+
+    .hero-container {
+        padding: 0 0.5rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+        text-decoration: none;
+    }
+
+    .hero-description {
+        font-size: 1.2rem;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .hero-container .cta-button {
+        font-size: 1.5rem;
+        padding: 0.5rem 1rem;    
+        margin: 1rem auto;
+    }
+    
+    .carousel-container {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .carousel-item {
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .about {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-description {
+        font-size: 1.2rem;
+    }
+
+    .benefits {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .benefit-item { 
+        max-width: 80%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .testimonials {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .testimonials h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-section {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .cta-section .container {
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .popup-content {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .popup-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .popup-content input,
+    .popup-content button {
+        font-size: 12px;    
+    }
+
+    .footer {
+        padding: 1rem 0;
+    }
+
+    .container-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer p {
+        font-size: 12px;
+        font-style: italic;
+    }
+}
