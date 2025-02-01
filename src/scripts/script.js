@@ -160,4 +160,31 @@ document.addEventListener("DOMContentLoaded", function () {
     update3DEffect();
 });
 
+// Suporte para touchscreen (arrastar no celular)
+document.addEventListener("touchstart", (e) => {
+    if (e.touches.length > 1) {
+        e.preventDefault();
+    }
+});
+
+// benefit item click
+document.addEventListener("DOMContentLoaded", function () {
+    const benefitItems = document.querySelectorAll(".benefit-item");
+
+    benefitItems.forEach((item) => {
+        item.addEventListener("click", function () {
+            const isActive = this.classList.contains("active");
+
+            // Fecha todos os outros antes de abrir um novo
+            benefitItems.forEach((el) => el.classList.remove("active"));
+
+            // Se o item já estava ativo, mantém fechado; caso contrário, ativa
+            if (!isActive) {
+                this.classList.add("active");
+            }
+        });
+    });
+});
+
+
 animate();

@@ -172,32 +172,75 @@ header {
     gap: 30px; 
     flex-wrap: wrap; 
 }
-
-.benefit-item {
-    background: var(--secondary-color);
-    color: var(--text-color);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(139, 0, 0, 0.3); /* Sombra sutil e avermelhada */
-    flex: 1;
-    max-width: 40%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.benefit-item:hover {
-    transform: translateY(-3px); /* Elevação menor */
-    box-shadow: 0 4px 12px rgba(187, 42, 42, 0.753); /* Sombra mais intensa, mas com menos alcance */
-}
-
 .benefit-item h3 {
     font-size: 2rem;
     margin-bottom: 10px;
 }
 
-.benefit-item p {
-    font-size: 1.5rem;
+.benefit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--secondary-color) 30%, var(--primary-color) 100%);
+    color: var(--text-color);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex: 1;
+    max-width: 40%;
+    height: 230px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Ícone de expansão */
+.benefit-item::after {
+    content: "⬇";
+    position: absolute;
+    bottom: 10px;
+    font-size: 2rem;
+    transition: transform 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+/* Efeito ao passar o mouse */
+.benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(187, 42, 42, 0.753);
+}
+
+/* Quando ativo, o card expande e ganha destaque */
+.benefit-item.active {
+    height: auto;
+    padding-bottom: 50px;
+    box-shadow: 0 8px 20px rgba(187, 42, 42, 0.9);
+}
+
+/* Roda o ícone quando o item é ativado */
+.benefit-item.active::after {
+    transform: rotate(180deg);
+    margin-top: 15px
+}
+
+/* Animação de exibição do texto */
+.benefit-item p {
+    font-size: 1.125rem;
+    display: none;
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+}
+
+.benefit-item.active p {
+    display: block;
+    opacity: 1;
+    max-height: 500px;
+    margin-bottom: 15px;
+}
 
 /* Seção de Testemunhos */
 .testimonials {
@@ -505,6 +548,10 @@ header {
         padding: 0 1rem;
     }
 
+    .carousel-container {
+        height: auto;
+    }
+
     header {
         padding: 2rem 1rem;
         background: 
@@ -543,9 +590,14 @@ header {
         padding: 10px 0;
     }
 
+    .carousel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .carousel-item {
         width: 50%;
-        font-size: 12px;
+        font-size: 15px;
     }
 
     .about {
@@ -652,8 +704,8 @@ header {
     header {
         padding: 1.5rem 0.5rem;
         background: 
-            linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 50%, rgba(0, 0, 0, 0.555) 100%), 
-            url('../images/Slide1.jpg') no-repeat center / cover;
+            linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 30%, rgba(0, 0, 0, 0.555) 100%), 
+            url('../images/Slide1.jpg') no-repeat left / cover;
     }
 
     .hero-container {
@@ -667,6 +719,7 @@ header {
     .hero-subtitle {
         font-size: 1.5rem;
         text-decoration: none;
+        margin-bottom: 0;
     }
 
     .hero-description {
@@ -682,13 +735,16 @@ header {
     }
     
     .carousel-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: auto;
         padding: 10px 0;
     }
 
     .carousel-item {
         width: 100%;
-        font-size: 10px;
+        font-size: 15px;
     }
 
     .about {
@@ -704,16 +760,31 @@ header {
     }
 
     .benefits {
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: column; 
+        gap: 15px;
     }
 
-    .benefit-item { 
-        max-width: 80%;
+    .benefit-item {
+        max-width: 100%;
+        width: 90%;
+        min-height: 250px; 
         height: auto;
-        padding: 1rem;
+        padding: 25px;
+        font-size: 0.9rem; 
+    }
+
+    /* Ajusta a seta para não sobrepor o texto */
+    .benefit-item::after {
+        bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    .benefit-item.active {
+        padding-bottom: 50px;
+    }
+
+    .benefit-item.active p {
+        max-height: none;
     }
 
     .testimonials {
