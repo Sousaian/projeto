@@ -79,66 +79,56 @@ document.addEventListener("DOMContentLoaded", function () {
     let isDown = false;
     let startX;
     let scrollLeft;
-    let isScrolling = false;
-    let touchMoveTimeout;
 
     function update3DEffect() {
-        if (!isScrolling) {
-            requestAnimationFrame(() => {
-                const center = slider.scrollLeft + slider.clientWidth / 2;
-                let closestItem = null;
-                let closestDistance = Infinity;
+        const center = slider.scrollLeft + slider.clientWidth / 2;
+        let closestItem = null;
+        let closestDistance = Infinity;
 
-                items.forEach((item) => {
-                    const boxCenter = item.offsetLeft + item.clientWidth / 2;
-                    const distance = Math.abs(center - boxCenter);
-                    if (distance < closestDistance) {
-                        closestDistance = distance;
-                        closestItem = item;
-                    }
-                });
+        items.forEach((item) => {
+            const boxCenter = item.offsetLeft + item.clientWidth / 2;
+            const distance = Math.abs(center - boxCenter);
 
-                items.forEach((item) => item.classList.remove("active", "prev", "next"));
-                if (closestItem) {
-                    closestItem.classList.add("active");
-                    if (closestItem.previousElementSibling) closestItem.previousElementSibling.classList.add("prev");
-                    if (closestItem.nextElementSibling) closestItem.nextElementSibling.classList.add("next");
-                }
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestItem = item;
+            }
+        });
 
-                isScrolling = false;
-            });
-            isScrolling = true;
+        items.forEach((item) => item.classList.remove("active", "prev", "next"));
+
+        if (closestItem) {
+            closestItem.classList.add("active");
+
+            if (closestItem.previousElementSibling) {
+                closestItem.previousElementSibling.classList.add("prev");
+            }
+            if (closestItem.nextElementSibling) {
+                closestItem.nextElementSibling.classList.add("next");
+            }
         }
     }
 
     function scrollToActive() {
-        setTimeout(() => {
-            const activeItem = document.querySelector(".testimonial-item.active");
-            if (activeItem) {
-                slider.scrollTo({
-                    left: activeItem.offsetLeft - (slider.clientWidth - activeItem.clientWidth) / 2,
-                    behavior: "smooth",
-                });
-            }
-        }, 100); // Pequeno atraso para suavizar a experiência
+        const activeItem = document.querySelector(".testimonial-item.active");
+        if (activeItem) {
+            slider.scrollTo({
+                left: activeItem.offsetLeft - (slider.clientWidth - activeItem.clientWidth) / 2,
+                behavior: "smooth",
+            });
+        }
     }
 
     slider.addEventListener("mousedown", (e) => {
         isDown = true;
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
-        slider.style.cursor = "grabbing";
         e.preventDefault();
     });
 
-    slider.addEventListener("mouseleave", () => {
-        isDown = false;
-        slider.style.cursor = "grab";
-    });
-
+    slider.addEventListener("mouseleave", () => (isDown = false));
     slider.addEventListener("mouseup", () => {
         isDown = false;
-        slider.style.cursor = "grab";
         scrollToActive();
     });
 
@@ -146,18 +136,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.2; // Reduzimos a sensibilidade do arrasto
+        const walk = (x - startX) * 1; // Ajuste para suavizar o arrasto
         slider.scrollLeft = scrollLeft - walk;
     });
 
     slider.addEventListener("scroll", update3DEffect);
 
-    // Suporte para touchscreen (arrastar no celular)
+    // Suporte para touchscreen
     slider.addEventListener("touchend", scrollToActive);
-    slider.addEventListener("touchmove", () => {
-        clearTimeout(touchMoveTimeout);
-        touchMoveTimeout = setTimeout(update3DEffect, 50);
-    });
+    slider.addEventListener("touchmove", update3DEffect);
 
     update3DEffect();
 });

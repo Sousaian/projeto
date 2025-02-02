@@ -285,15 +285,14 @@ header {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
-    overflow-y: hidden;
+    overflow: hidden; 
 }
 
 /* Slider com efeito de carrossel */
 .testimonials-slider {
     display: flex;
-    gap: 30px;
+    gap: 20px;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     padding: 20px;
     cursor: grab;
@@ -301,8 +300,7 @@ header {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     transform-style: preserve-3d;
-    transition: transform 0.5s ease-in-out;
-
+    will-change: transform; 
 }
 
 .testimonials-slider::-webkit-scrollbar {
@@ -314,40 +312,39 @@ header {
     flex: 0 0 auto;
     width: 300px;
     scroll-snap-align: center;
-    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     transform-origin: center;
     text-align: center;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 16px;
 }
 
+/* Suaviza o efeito nas imagens */
 .testimonial-item img {
     width: 100%;
     height: auto;
     border-radius: 16px;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 /* Efeito de destaque para a imagem central */
 .testimonial-item.active {
-    transform: scale(1.08) translateZ(100px);
+    transform: scale(1.05) translateZ(20px);
     opacity: 1;
-    box-shadow: 0px 8px 25px rgba(165, 42, 42, 0.6);
+    box-shadow: 0px 6px 20px rgba(165, 42, 42, 0.5);
 }
 
-/* Efeito nas laterais */
+/* Efeito nas laterais (suavizado) */
 .testimonial-item.prev {
-    transform: rotateY(20deg) scale(0.9) translateX(-30px);
-    opacity: 0.6;
+    transform: rotateY(8deg) scale(0.95) translateX(-15px);
+    opacity: 0.8;
 }
 
 .testimonial-item.next {
-    transform: rotateY(-20deg) scale(0.9) translateX(30px);
-    opacity: 0.6;
+    transform: rotateY(-8deg) scale(0.95) translateX(15px);
+    opacity: 0.8;
 }
-
 
 /* CTA Section - Card Style */
 
