@@ -75,55 +75,56 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const slider = document.querySelector(".testimonials-slider");
     const items = document.querySelectorAll(".testimonial-item");
-    
+
     let isDown = false;
     let startX;
     let scrollLeft;
+    let isScrolling = false;
+    let touchMoveTimeout;
 
     function update3DEffect() {
-        const center = slider.scrollLeft + slider.clientWidth / 2;
+        if (!isScrolling) {
+            requestAnimationFrame(() => {
+                const center = slider.scrollLeft + slider.clientWidth / 2;
+                let closestItem = null;
+                let closestDistance = Infinity;
 
-        let closestItem = null;
-        let closestDistance = Infinity;
+                items.forEach((item) => {
+                    const boxCenter = item.offsetLeft + item.clientWidth / 2;
+                    const distance = Math.abs(center - boxCenter);
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestItem = item;
+                    }
+                });
 
-        items.forEach((item) => {
-            const boxCenter = item.offsetLeft + item.clientWidth / 2;
-            const distance = Math.abs(center - boxCenter);
+                items.forEach((item) => item.classList.remove("active", "prev", "next"));
+                if (closestItem) {
+                    closestItem.classList.add("active");
+                    if (closestItem.previousElementSibling) closestItem.previousElementSibling.classList.add("prev");
+                    if (closestItem.nextElementSibling) closestItem.nextElementSibling.classList.add("next");
+                }
 
-            if (distance < closestDistance) {
-                closestDistance = distance;
-                closestItem = item;
-            }
-        });
-
-        items.forEach((item) => {
-            item.classList.remove("active", "prev", "next");
-        });
-
-        if (closestItem) {
-            closestItem.classList.add("active");
-
-            const prevItem = closestItem.previousElementSibling;
-            const nextItem = closestItem.nextElementSibling;
-
-            if (prevItem) prevItem.classList.add("prev");
-            if (nextItem) nextItem.classList.add("next");
+                isScrolling = false;
+            });
+            isScrolling = true;
         }
     }
 
     function scrollToActive() {
-        const activeItem = document.querySelector(".testimonial-item.active");
-        if (activeItem) {
-            slider.scrollTo({
-                left: activeItem.offsetLeft - (slider.clientWidth - activeItem.clientWidth) / 2,
-                behavior: "smooth",
-            });
-        }
+        setTimeout(() => {
+            const activeItem = document.querySelector(".testimonial-item.active");
+            if (activeItem) {
+                slider.scrollTo({
+                    left: activeItem.offsetLeft - (slider.clientWidth - activeItem.clientWidth) / 2,
+                    behavior: "smooth",
+                });
+            }
+        }, 100); // Pequeno atraso para suavizar a experiência
     }
 
     slider.addEventListener("mousedown", (e) => {
         isDown = true;
-        slider.classList.add("active");
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
         slider.style.cursor = "grabbing";
@@ -132,13 +133,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     slider.addEventListener("mouseleave", () => {
         isDown = false;
-        slider.classList.remove("active");
         slider.style.cursor = "grab";
     });
 
     slider.addEventListener("mouseup", () => {
         isDown = false;
-        slider.classList.remove("active");
         slider.style.cursor = "grab";
         scrollToActive();
     });
@@ -147,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 2;
+        const walk = (x - startX) * 1.2; // Reduzimos a sensibilidade do arrasto
         slider.scrollLeft = scrollLeft - walk;
     });
 
@@ -155,16 +154,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Suporte para touchscreen (arrastar no celular)
     slider.addEventListener("touchend", scrollToActive);
-    slider.addEventListener("touchmove", update3DEffect);
+    slider.addEventListener("touchmove", () => {
+        clearTimeout(touchMoveTimeout);
+        touchMoveTimeout = setTimeout(update3DEffect, 50);
+    });
 
     update3DEffect();
-});
-
-// Suporte para touchscreen (arrastar no celular)
-document.addEventListener("touchstart", (e) => {
-    if (e.touches.length > 1) {
-        e.preventDefault();
-    }
 });
 
 // benefit item click
