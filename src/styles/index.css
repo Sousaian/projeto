@@ -199,13 +199,15 @@ header {
 
 /* Ícone de expansão */
 .benefit-item::after {
-    content: "⬇";
+    content: "\f078"; 
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; 
     position: absolute;
     bottom: 10px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     transition: transform 0.3s ease-in-out;
-    margin-top: 10px;
 }
+
 
 /* Efeito ao passar o mouse */
 .benefit-item:hover {
