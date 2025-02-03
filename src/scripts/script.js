@@ -75,6 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const slider = document.querySelector(".testimonials-slider");
     const items = document.querySelectorAll(".testimonial-item");
+    const prevButton = document.querySelector(".prev-button");
+    const nextButton = document.querySelector(".next-button");
 
     let isDown = false;
     let startX;
@@ -119,6 +121,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Navegação com os botões
+    function moveSlide(direction) {
+        const activeItem = document.querySelector(".testimonial-item.active");
+        let newActive;
+
+        if (direction === "next") {
+            newActive = activeItem.nextElementSibling || items[0]; // Volta para o primeiro no final
+        } else {
+            newActive = activeItem.previousElementSibling || items[items.length - 1]; // Volta para o último no início
+        }
+
+        newActive.classList.add("active");
+        activeItem.classList.remove("active");
+
+        scrollToActive();
+    }
+
+    prevButton.addEventListener("click", () => moveSlide("prev"));
+    nextButton.addEventListener("click", () => moveSlide("next"));
+
     slider.addEventListener("mousedown", (e) => {
         isDown = true;
         startX = e.pageX - slider.offsetLeft;
@@ -136,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1; // Ajuste para suavizar o arrasto
+        const walk = (x - startX) * 1;
         slider.scrollLeft = scrollLeft - walk;
     });
 
@@ -148,6 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     update3DEffect();
 });
+
 
 // benefit item click
 document.addEventListener("DOMContentLoaded", function () {

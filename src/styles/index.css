@@ -23,15 +23,15 @@ body {
     color: var(--text-color);
 }
 
-header {
+.hero  {
     display: flex;
     justify-content: space-between;
     position: relative;
     text-align: left;
     height: 90vh;
     background: 
-        linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 60%, rgba(0, 0, 0, 0.555) 100%), 
-        url('../images/Slide1.jpg') no-repeat center / cover;
+        linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 60%, rgba(0, 0, 0, 0.616) 100%), 
+        url('../images/Luiz_02.jpg') no-repeat right ;
 }
 
 .hero-container {
@@ -49,7 +49,7 @@ header {
 
 .hero-subtitle {
     font-size: 2.5rem;
-    background: linear-gradient(90deg,rgb(179, 0, 0) 0%, rgba(88, 12, 12, 0.733) ); /* Defina o gradiente */
+    background: linear-gradient(90deg,rgb(179, 0, 0) 0%, rgba(161, 16, 16, 0.733) ); /* Defina o gradiente */
     -webkit-background-clip: text; /* Aplica o gradiente apenas no texto */
     -webkit-text-fill-color: transparent; /* Torna o preenchimento do texto transparente */
     font-size: 3rem; /* Ajuste o tamanho do texto conforme necessário */
@@ -346,6 +346,45 @@ header {
     opacity: 0.8;
 }
 
+/* Controles do Carrossel */
+.testimonial-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.carousel-button {
+    background: var(--contrast); 
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Deixa os botões arredondados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-button i {
+    font-size: 20px;
+    color: #fff; /* Ícone branco para melhor contraste */
+}
+
+/* Efeito de Hover */
+.carousel-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Efeito de Clique */
+.carousel-button:active {
+    transform: scale(0.95);
+}
+
+
 /* CTA Section - Card Style */
 
 .cta-section {
@@ -555,11 +594,12 @@ header {
         height: auto;
     }
 
-    header {
+    .hero {
         padding: 2rem 1rem;
+        padding-bottom: 0;
         background: 
-            linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 50%, rgba(0, 0, 0, 0.555) 100%), 
-            url('../images/Slide1.jpg') no-repeat center / cover;
+            linear-gradient(  rgba(0, 0, 0, 0.555) 0%, rgb(24, 24, 24) 50%, rgb(29, 29, 29) 100%), 
+            url('../images/Luiz.jpg') no-repeat center / cover;
     }
 
     .hero-container {
@@ -568,6 +608,7 @@ header {
     }
 
     .hero-title {
+        margin-top: 10rem;
         font-size: 2.5rem;
     }
 
@@ -707,16 +748,20 @@ header {
     header {
         padding: 1.5rem 0.5rem;
         background: 
-            linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 30%, rgba(0, 0, 0, 0.555) 100%), 
-            url('../images/Slide1.jpg') no-repeat left / cover;
+        linear-gradient(  rgba(0, 0, 0, 0.555) 0%, rgb(24, 24, 24) 50%, rgb(29, 29, 29) 100%), 
+        url('../images/Luiz.jpg') no-repeat center / cover;
     }
 
     .hero-container {
         padding: 0 0.5rem;
+        margin-bottom: 3rem;
     }
 
     .hero-title {
+        text-align: center;
+        margin: auto;
         font-size: 2rem;
+        max-width: 15ch;
     }
 
     .hero-subtitle {
@@ -796,6 +841,10 @@ header {
 
     .testimonials h2 {
         font-size: 1.5rem;
+    }
+
+    .testimonial-controls {
+        gap: 40px;
     }
 
     .cta-section {
