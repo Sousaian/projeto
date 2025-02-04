@@ -32,8 +32,10 @@ body {
     text-align: left;
     height: 90vh;
     background: 
-        linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 60%, rgba(0, 0, 0, 0.616) 100%), 
-        url('../images/Luiz_02.jpg') no-repeat right ;
+        linear-gradient(90deg, rgb(29, 29, 29) 0%, rgb(24, 24, 24) 60%, rgba(0, 0, 0, 0.24) 100%), 
+        url('../images/Luiz.jpg') no-repeat right / 90%;  
+        background-size: contain;
+    overflow: hidden;
 }
 
 .hero-container {
@@ -600,8 +602,8 @@ body {
         padding: 2rem 1rem;
         padding-bottom: 0;
         background: 
-            linear-gradient(  rgba(0, 0, 0, 0.555) 0%, rgb(24, 24, 24) 50%, rgb(29, 29, 29) 100%), 
-            url('../images/Luiz.jpg') no-repeat center / cover;
+            linear-gradient(  rgba(0, 0, 0, 0) 0%, rgb(24, 24, 24) 50%, rgb(29, 29, 29) 100%), 
+            url('../images/background3.jpg') no-repeat center / 130%;
     }
 
     .hero-container {
@@ -750,8 +752,27 @@ body {
     header {
         padding: 1.5rem 0.5rem;
         background: 
-        linear-gradient(  rgba(0, 0, 0, 0.555) 0%, rgb(24, 24, 24) 50%, rgb(29, 29, 29) 100%), 
-        url('../images/Luiz.jpg') no-repeat center / cover;
+            linear-gradient(rgba(36, 36, 36, 0.8), rgba(24, 24, 24, 0.9)),
+            url('../images/background.jpg') no-repeat center / 90%;
+        position: relative;
+        overflow: hidden; /* Garante que o pseudo-elemento não vaze */
+    }
+    
+    /* Cria o efeito de elipse com fade */
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            ellipse at 50% 120%, 
+            rgba(0, 0, 0, 0) 40%, 
+            rgba(0, 0, 0, 0.8) 100%
+        );
+        clip-path: ellipse(100% 60% at 50% 100%); /* Ajuste da curvatura */
+        pointer-events: none; 
     }
 
     .hero-container {
@@ -762,8 +783,10 @@ body {
     .hero-title {
         text-align: center;
         margin: auto;
-        font-size: 2rem;
-        max-width: 15ch;
+        margin-bottom: 1rem;
+        font-size: 1.9rem;
+        font-weight:900;
+        max-width: 25ch;
     }
 
     .hero-subtitle {
