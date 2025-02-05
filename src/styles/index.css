@@ -862,6 +862,7 @@ body {
 
     .testimonials {
         padding: 1.5rem 0.5rem;
+        height: auto;
     }
 
     .testimonials h2 {
